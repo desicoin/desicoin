@@ -14,7 +14,7 @@ To Build
 	cd src/
 	make -f makefile.unix		# Headless desicoin
 
-See readme-qt.rst for instructions on building Litecoin-Qt, the graphical user interface.
+See readme-qt.rst for instructions on building Desicoin-Qt, the graphical user interface.
 
 Dependencies
 ---------------------
