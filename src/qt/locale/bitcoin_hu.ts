@@ -2245,8 +2245,8 @@ Cím: %4
     </message>
     <message>
         <location line="-28"/>
-        <source>Listen for connections on &lt;port&gt; (default: 9333 or testnet: 19333)</source>
-        <translation>Csatlakozásokhoz figyelendő &lt;port&gt; (alapértelmezett: 9333 or testnet: 19333)</translation>
+        <source>Listen for connections on &lt;port&gt; (default: 5711 or testnet: 45710)</source>
+        <translation>Csatlakozásokhoz figyelendő &lt;port&gt; (alapértelmezett: 5711 or testnet: 45710)</translation>
     </message>
     <message>
         <location line="+5"/>
