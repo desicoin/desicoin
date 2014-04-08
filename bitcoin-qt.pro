@@ -29,6 +29,8 @@ OPENSSL_INCLUDE_PATH=C:/depsnew/openssl-1.0.1f/include
 OPENSSL_LIB_PATH=C:/depsnew/openssl-1.0.1f
 MINIUPNPC_INCLUDE_PATH=C:/depsnew/
 MINIUPNPC_LIB_PATH=C:/depsnew/miniupnpc
+QRENCODE_INCLUDE_PATH=C:/depsnew/qrencode-3.4.3
+QRENCODE_LIB_PATH=C:/depsnew/qrencode-3.4.3/.libs
 
 OBJECTS_DIR = build
 MOC_DIR = build
