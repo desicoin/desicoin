@@ -1065,13 +1065,13 @@ int64 static GetBlockValue(int nHeight, int64 nFees)
 {
     int64 nSubsidy = 100 * COIN;
 
-    // Subsidy is cut in half every 840000 blocks, which will occur approximately every 4 years
-    nSubsidy >>= (nHeight / 840000); // Desicoin: 840k blocks in ~4 years
+    // Subsidy is cut in half every 720000 blocks, which will occur approximately every 2 years
+    nSubsidy >>= (nHeight / 720000); // Desicoin: 720k blocks in ~2 years
 
     return nSubsidy + nFees;
 }
 
-static const int64 nTargetTimespan = 1 * 24 * 60 * 60; // Desicoin: 1 day
+static const int64 nTargetTimespan = 1 * 60 * 60; // Desicoin: 1 hour difficulty retarget
 static const int64 nTargetSpacing = 90; // Desicoin: 90 seconds
 static const int64 nInterval = nTargetTimespan / nTargetSpacing;
 
@@ -2768,7 +2768,7 @@ bool InitBlockIndex() {
         block.hashPrevBlock = 0;
         block.hashMerkleRoot = block.BuildMerkleTree();
         block.nVersion = 1;
-        block.nTime    = 1395458658;
+        block.nTime    = 1396985472;
         block.nBits    = 0x1e0ffff0;
         block.nNonce   = 951696;
 
