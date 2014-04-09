@@ -2770,7 +2770,7 @@ bool InitBlockIndex() {
         block.nVersion = 1;
         block.nTime    = 1397000767;
         block.nBits    = 0x1e0ffff0;
-        block.nNonce   = 0;
+        block.nNonce   = 45958;
 
         if (fTestNet)
         {
@@ -2825,7 +2825,6 @@ if (true && block.GetHash() != hashGenesisBlock)
 
 
       */
-
         block.print();
         assert(hash == hashGenesisBlock); //remove when inserting missing code
 
