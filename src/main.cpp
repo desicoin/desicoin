@@ -31,7 +31,7 @@ CTxMemPool mempool;
 unsigned int nTransactionsUpdated = 0;
 
 map<uint256, CBlockIndex*> mapBlockIndex;
-uint256 hashGenesisBlock("0x5dd000f5b27c684e2f32383fe3a92c961f7b3cd407d1048180bf6ae8c1bee7f5");
+uint256 hashGenesisBlock("0x2209b7a14e6f819773f42b16bb5a85d8af770a97c3166d43175644cbc7abf818");
 static CBigNum bnProofOfWorkLimit(~uint256(0) >> 20); // Desicoin: starting difficulty is 1 / 2^12
 CBlockIndex* pindexGenesisBlock = NULL;
 int nBestHeight = -1;
@@ -2723,7 +2723,7 @@ bool LoadBlockIndex()
         pchMessageStart[1] = 0xc1;
         pchMessageStart[2] = 0xb7;
         pchMessageStart[3] = 0xdc;
-        hashGenesisBlock = uint256("0x030bd1840bf7d9c94372c01fb7589dbc5c66e5d82455361d29180341c6384436");
+        hashGenesisBlock = uint256("0xbe2402b0d6d1c6e94a208b91d604e8cfa3c298e8238e917b6a1010f6674971df");
     }
 
     //
@@ -2756,27 +2756,27 @@ bool InitBlockIndex() {
         //   vMerkleTree: 97ddfbbae6
 
         // Genesis block
-        const char* pszTimestamp = "WT20 2014 19/03/2014::09:43";
+        const char* pszTimestamp = "ipl2014Apr";
         CTransaction txNew;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
         txNew.vin[0].scriptSig = CScript() << 486604799 << CBigNum(4) << vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
-        txNew.vout[0].nValue = 50 * COIN;
+        txNew.vout[0].nValue = 100 * COIN;
         txNew.vout[0].scriptPubKey = CScript() << ParseHex("040184710fa689ad5023690c80f3a49c8f13f8d45b8c857fbcbc8bc4a8e4d3eb4b10f4d4604fa08dce601aaf0f470216fe1b51850b4acf21b179c45070ac7b03a9") << OP_CHECKSIG;
         CBlock block;
         block.vtx.push_back(txNew);
         block.hashPrevBlock = 0;
         block.hashMerkleRoot = block.BuildMerkleTree();
         block.nVersion = 1;
-        block.nTime    = 1396985472;
+        block.nTime    = 1397000767;
         block.nBits    = 0x1e0ffff0;
-        block.nNonce   = 951696;
+        block.nNonce   = 0;
 
         if (fTestNet)
         {
-            block.nTime    = 1395202346;
+            block.nTime    = 1396999284;
             //block.nNonce   = 385270584;
-             block.nNonce   = 1084489;
+             block.nNonce   = 45958;
         }
 
         //// debug print
@@ -2784,14 +2784,50 @@ bool InitBlockIndex() {
         printf("%s\n", hash.ToString().c_str());
         printf("%s\n", hashGenesisBlock.ToString().c_str());
         printf("%s\n", block.hashMerkleRoot.ToString().c_str());
-        assert(block.hashMerkleRoot == uint256("0x4f6ab2ade5a2d6e74651e2e3024f95806ba885fa05537f0a227b9471ff5c64d8"));
+        assert(block.hashMerkleRoot == uint256("0x9bae7556676481c5e6735b1e2dd83d51f598d9b8ca778dbf9da5c280b75af55a"));
         
         
-        
-      
+
+
+
+         // The missing code for generating merkle hash
+/*
+if (true && block.GetHash() != hashGenesisBlock)
+{
+    printf("Searching for genesis block...\n");
+    // This will figure out a valid hash and Nonce if you're
+    // creating a different genesis block:
+    uint256 hashTarget = CBigNum().SetCompact(block.nBits).getuint256();
+    uint256 thash;
+    char scratchpad[SCRYPT_SCRATCHPAD_SIZE];
+
+    while(true)
+    {
+        scrypt_1024_1_1_256_sp_generic(BEGIN(block.nVersion), BEGIN(thash), scratchpad);
+        if (thash <= hashTarget)
+            break;
+        if ((block.nNonce & 0xFFF) == 0)
+        {
+            printf("nonce %08X: hash = %s (target = %s)\n", block.nNonce, thash.ToString().c_str(), hashTarget.ToString().c_str());
+        }
+        ++block.nNonce;
+        if (block.nNonce == 0)
+        {
+            printf("NONCE WRAPPED, incrementing time\n");
+            ++block.nTime;
+        }
+    }
+    printf("block.nTime = %u \n", block.nTime);
+    printf("block.nNonce = %u \n", block.nNonce);
+    printf("block.GetHash = %s\n", block.GetHash().ToString().c_str());
+}
+
+
+
+      */
 
         block.print();
-        assert(hash == hashGenesisBlock);
+        assert(hash == hashGenesisBlock); //remove when inserting missing code
 
 
  
