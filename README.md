@@ -10,7 +10,7 @@ What is Desicoin?
 ----------------
 
 Desicoin is India's first and only cryptocurrency.
-It is a fork of Litecoin using scrypt as a proof-of-work algorithm.
+It is a fork of Litecoin using scrypt as a proof-of-work algorithm and it is not premined.
  - 90 second block targets
  - subsidy halves in 720k blocks (~2 years)
  - ~150 million total coins
